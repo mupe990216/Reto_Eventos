@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="/img/lv.ico" type="image/x-icon">
+    {# <link rel="shortcut icon" href="{{ asset('img/lv.ico') }}" type="image/x-icon"> #}
+    <link rel="icon" href="img/lv.ico" type="image/x-icon">
+    {# <link rel="icon" href="{{ asset('img/lv.ico') }}" type="image/x-icon"> #}
+    {% block css %} {% endblock %}
+    {% block js %} {% endblock %}
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="/css/normalize1.css">
+    {# <link rel="stylesheet" href="{{ asset('css/normalize1.css') }}"> #}
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="css/materialize.min1.css">
+    {# <link rel="stylesheet" href="{{ asset('css/materialize.min1.css') }}"> #}
+
+    <!-- Material Design Iconic Font CSS -->
+    <link rel="stylesheet" href="css/material-design-iconic-font.min1.css">
+    {# <link rel="stylesheet" href="{{ asset('css/material-design-iconic-font.min1.css') }}"> #}
+
+    <!-- Malihu jQuery custom content scroller CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar1.css">
+    {# <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar1.css') }}"> #}
+
+     <!-- Sweet Alert CSS -->
+    <link rel="stylesheet" href="css/sweetalert1.css">
+    {# <link rel="stylesheet" href="{{ asset('css/sweetalert1.css') }}"> #}
+
+    <!-- MaterialDark CSS -->
+    <link rel="stylesheet" href="css/style1.css">
+    {# <link rel="stylesheet" href="{{ asset('css/style1.css') }}"> #}
+
+    <!-- Sweet Alert JS -->
+    <script src="js/sweetalert.min1.js"></script>
+    {# <script src="{{ asset('js/sweetalert.min1.js') }}"></script> #}
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    {# <script src="{{ asset('js/jquery.min.js') }}"></script> #}
+
+    <!-- Materialize JS -->
+    <script src="js/materialize.min1.js"></script>
+    {# <script src="{{ asset('js/materialize.min1.js') }}"></script> #}
+
+    <!-- Malihu jQuery custom content scroller JS -->
+    <script src="js/jquery.mCustomScrollbar.concat.min1.js"></script>
+    {# <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min1.js') }}"></script> #}
+
+    <!-- MaterialDark JS -->
+    <script src="js/main1.js"></script>
+    {# <script src="{{ asset('js/main1.js') }}"></script> #}
+</head>
+
+<body>
+{# <body oncopy="return false" oncut="return false" onpaste="return false" oncontextmenu="return false"
+    ondragstart="return false" onselectstart="return false"> #}
+    <!-- Nav Lateral -->
+    <section class="NavLateral full-width">
+
+        <div class="NavLateral-FontMenu full-width ShowHideMenu"></div>
+
+        <div class="NavLateral-content full-width">
+
+            <header class="NavLateral-title full-width center-align">
+                P R O J E C T<i class="zmdi zmdi-close NavLateral-title-btn ShowHideMenu"></i>
+            </header>
+
+            <figure class="full-width NavLateral-logo">
+                <img src="/img/logo.png" alt="material-logo"
+                    class="responsive-img center-box">
+                {# <img src="{{ asset('img/logo.png') }}" alt="material-logo"
+                    class="responsive-img center-box"> #}
+                <figcaption class="center-align" style="padding: 1%;">Test</figcaption>
+                
+            </figure>
+            {% block NavLateral %}{% endblock %}
+
+        </div>
+
+    </section>
+    <!-- Nav Lateral -->
+
+    <!-- Page content -->
+    <section class="ContentPage full-width">
+
+        <!-- Area de Campanita de Notificaciones -->
+        <div class="ContentPage-Nav full-width">
+            {% block CampanitaNotificaciones %}{% endblock %}
+        </div>
+        <!-- Termina Area de Campanita -->
+
+        <!-- Area de Mensajes que Llegan -->
+        {% block mensajes %}{% endblock %}
+        <!-- Termina Area de Mensajes  -->
+
+        <!-- CONTENIDO -->
+        {% block contenido %}{% endblock %}
+        <!-- CONTENIDO -->
+
+        <!-- Footer -->
+        <footer class="footer-MaterialDark">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Author</h5>
+                        <p class="grey-text text-lighten-4">
+                            Muñoz Primero Elías
+                        </p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Technologies</h5>
+                        <ul>
+                            <li><a target="_blank" class="grey-text text-lighten-3"
+                                    href="http://materializecss.com/">Materialize</a></li>
+                            <li><a target="_blank" class="grey-text text-lighten-3"
+                                    href="http://zavoloklom.github.io/material-design-iconic-font/icons.html">Material
+                                    Design Iconic Font</a></li>
+                            <li><a target="_blank" class="grey-text text-lighten-3"
+                                    href="http://t4t5.github.io/sweetalert/">Sweet Alert</a></li>
+                            <li><a target="_blank" class="grey-text text-lighten-3"
+                                    href="http://manos.malihu.gr/jquery-custom-content-scroller/">jQuery custom content
+                                    scroller</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="NavLateralDivider"></div>
+            <div class="footer-copyright">
+                <div class="container center-align">
+                    © Test Project , 2022
+                </div>
+            </div>
+        </footer>
+    </section>
+    {% block finalJS %}{% endblock %}
+</body>
+
+</html>

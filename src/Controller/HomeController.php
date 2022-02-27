@@ -4,35 +4,62 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/",name="pagina_principal")
+     * @Route("/",name="app_homepage")
      */
-    public function homePage(){
-        $number = random_int(0,100);
+    public function homePage()
+    {
+        return $this->render('login.html.twig');
+    }
+
+    /**
+     * @Route("/login",name="app_login",methods={"POST"})
+     */
+    public function login()
+    {
+        $request = Request::createFromGlobals();
+        $object = json_decode($request->request->get('dataJson'),true);
+        if($object!=null){
+            $usr = $object['usur'];
+            $pws = $object['pswd'];
+            // 
+            return new Response("Welcome!");
+        }else{
+            return new Response("Credenciales invalidas");
+        }
+    }
+
+    /**
+     * @Route("/registration",name="app_registration",methods={"GET"})
+     */
+    public function registration()
+    {
+        return $this->render('create_count.html.twig');
+    }
+
+    /**
+     * @Route("/menu",name="app_menu",methods={"GET"})
+     */
+    public function menu()
+    {
         return new Response(
-            "Hola Mundo Con Symfony UwUr ".$number.
-            "<br><button><a href='./Elias'>Saludar</button>"
+            "Menu Inicio " . "<br><button><a href='/'>Regresar</button>"
         );
     }
 
     /**
-     * @Route("/{nombre}",name="saludador")
+     * @Route("/{name}",name="app_notFound")
      */
-    public function saludar($nombre){
-        if($nombre == "Elias"){
-            return new Response(
-                "<h1> Hola ".$nombre." UwU</h1>".
-                "<br><button><a href='/'>Regresar</button>"
-            );
-        }else{
-            return new Response(
-                "Usuario No autorizado "."<br><button><a href='/'>Regresar</button>"
-            );
-        }
-
+    public function notFound($name)
+    {
+        return new Response(
+            "Usuario No autorizado " . "<br><button><a href='/'>Regresar</button>"
+        );
     }
 }

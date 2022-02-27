@@ -50,8 +50,8 @@ function register() {
         enviar = false;
     } else {
         cad = form.usur.value.length;
-        if (cad < 8) {
-            swal("Nickname size", "minimum 8 characters", "error");
+        if (cad < 2) {
+            swal("Nickname size", "minimum 2 characters", "error");
             enviar = false;
         }
     }
@@ -61,8 +61,8 @@ function register() {
         enviar = false;
     } else {
         cad = form.pswd1.value.length;
-        if (cad < 8) {
-            swal("Password size", "minimum 8 characters", "error");
+        if (cad < 2) {
+            swal("Password size", "minimum 2 characters", "error");
             enviar = false;
         }
     }
@@ -72,8 +72,8 @@ function register() {
         enviar = false;
     }else{
         cad = form.nombre.value.length;
-        if (cad < 3) {
-            swal("Name size", "minimum 3 characters", "error");
+        if (cad < 2) {
+            swal("Name size", "minimum 2 characters", "error");
             enviar = false;
         }
     }
@@ -83,8 +83,8 @@ function register() {
         enviar = false;
     }else{
         cad = form.ape1.value.length;
-        if (cad < 3) {
-            swal("Surname size", "minimum 3 characters", "error");
+        if (cad < 2) {
+            swal("Surname size", "minimum 2 characters", "error");
             enviar = false;
         }
     }
@@ -94,8 +94,8 @@ function register() {
         enviar = false;
     }else{
         cad = form.ape2.value.length;
-        if (cad < 3) {
-            swal("Second surname size", "minimum 3 characters", "error");
+        if (cad < 2) {
+            swal("Second surname size", "minimum 2 characters", "error");
             enviar = false;
         }
     }
@@ -112,7 +112,7 @@ function register() {
     }
 
     if (form.genero.value == -1){
-        swal("Missing gender", "Select an option", "error");
+        swal("Missing gender", "Select a gender", "error");
         enviar = false;
     }
     
@@ -143,7 +143,7 @@ function register() {
             function () {
                 $.ajax({
                     type: "POST",
-                    url: "/register",
+                    url: "/registration",
                     data: {
                         dataJson: JSON.stringify(dataJson)
                     },

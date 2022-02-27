@@ -40,10 +40,6 @@ function login() {
 }
 
 
-function hola123(){
-    alert('hola');
-}
-
 function register() {
     let cad = 0;
     let enviar = true;
@@ -125,7 +121,7 @@ function register() {
         enviar = false;
     }
 
-    /*
+    
     if (enviar) {
         let dataJson = new Object();
         dataJson.usur = form.usur.value;
@@ -176,5 +172,5 @@ function register() {
         );
     }
 
-    */
+    
 }

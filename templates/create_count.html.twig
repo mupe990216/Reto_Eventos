@@ -1,13 +1,28 @@
 {% extends "base_init.html.twig" %}
 {% block title %}.: Register :.{% endblock %}
 
+{% block NavLateral %}
+        <div class="NavLateral-Nav">
+                <ul class="full-width">
+                    <li>
+                        <a href="/login" class="waves-effect waves-light"><i class="zmdi zmdi-pin-account"></i> Iniciar Sesion</a>
+                    </li>
+                    <li class="NavLateralDivider"></li>
+                    <li>
+                        <a href="/" class="waves-effect waves-light"><i class="zmdi zmdi-assignment-return"></i> Inicio</a>
+                    </li>
+                    <li class="NavLateralDivider"></li>
+                </ul><br><br><br>
+        </div>
+{% endblock %}
+
 {% block contenido %}
 <!-- CONTENIDO -->
 <div class="row">
     <nav>
         <div class="nav-wrapper grey darken-2">
             <div class="col s12" style="text-align: center;">
-                <a href="/" class="rutaNavega">Login</a>
+                <a href="/login" class="rutaNavega">Login</a>
                 <i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
                 <a href="#" class="rutaNavegaFinal">Create Your Count</a>
             </div>

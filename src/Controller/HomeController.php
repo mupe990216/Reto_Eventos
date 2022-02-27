@@ -14,10 +14,10 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function homePage()
     {
-        return $this->render('login.html.twig');
+        return $this->render('index.html.twig');
     }
 
-    #[Route('/login', name: 'app_login')]
+    #[Route('/login', name: 'app_login', methods: ["GET","POST"])]
     public function login()
     {
         $request = Request::createFromGlobals();
@@ -34,12 +34,10 @@ class HomeController extends AbstractController
             }else{
                 return new Response("Credenciales invalidas".$request->getMethod());
             }//end if
-        }else{
-            return new Response("Method not support");
-        }//end if
+        }
     }
 
-    #[Route('/registration', name: 'app_registration', methods: ["GET"])]
+    #[Route('/registration', name: 'app_registration')]
     public function registration()
     {
         return $this->render('create_count.html.twig');

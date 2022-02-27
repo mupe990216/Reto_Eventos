@@ -22,7 +22,8 @@ create table Evento(
     estado varchar(128) not null,
     pais varchar(128) not null,
     fechaInicio varchar(64) not null,
-    fechaTermino varchar(64) not null
+    fechaTermino varchar(64) not null,
+    categoria varchar(64) not null
 );
 
 create table Ticket(
@@ -32,3 +33,9 @@ create table Ticket(
     costo float(32) not null,
     foreign key (idEvento) references Evento(idEvento) on delete cascade on update cascade
 );
+
+
+insert into Credenciales values("hola","1234");
+select * from Credenciales;
+
+use pruebaorm;

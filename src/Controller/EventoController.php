@@ -28,6 +28,6 @@ class EventoController extends AbstractController
         $evento->setCategoria($categoria);
         $entityManager->persist($evento);
         $entityManager->flush();
-        return new Response("Evento registrado");
+        return new Response("Registration successful!");
     }
 }

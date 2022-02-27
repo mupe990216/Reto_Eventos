@@ -1,0 +1,109 @@
+{% extends 'menu_inicio.html.twig' %}
+{% block contenido %}
+  <!-- CONTENIDO -->
+<div class="row">
+    <nav>
+        <div class="nav-wrapper grey darken-2">
+            <div class="col s12" style="text-align: center;">
+                <a href="/menu" class="rutaNavega">Menu</a>
+                <i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
+                <a href="#" class="rutaNavegaFinal">Seleccionar categoria</a>
+            </div>
+        </div>
+    </nav>
+</div><br>
+
+
+<h2 class="center-align">Selecciona una categoria</h2>
+  <div class="container" style="margin-bottom: 15%;">
+    <div class="row">
+      <div class="col s12">
+        <table class="responsive-table highlight centered">
+          <thead>
+            <tr>
+              <!-- <th data-field="Email">Email</th> -->
+              <th data-field="Usuario">
+                Categoria
+              </th>
+              <th data-field="Modificar">
+                Buscar eventos
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>
+                  Concierto
+                </td>
+                <td>
+                {% if tipo == 1 %}
+                  <a href="/menu/update/1" class="btn waves-effect waves-light teal hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                {% if tipo == 2 %}
+                  <a href="/menu/delete/1" class="btn waves-effect waves-light pink hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  Festival
+                </td>
+                <td>
+                {% if tipo == 1 %}
+                  <a href="/menu/update/2" class="btn waves-effect waves-light teal hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                {% if tipo == 2 %}
+                  <a href="/menu/delete/2" class="btn waves-effect waves-light pink hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  Teatro
+                </td>
+                <td>
+                {% if tipo == 1 %}
+                  <a href="/menu/update/3" class="btn waves-effect waves-light teal hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                {% if tipo == 2 %}
+                  <a href="/menu/delete/3" class="btn waves-effect waves-light pink hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  Deporte
+                </td>
+                <td>
+                {% if tipo == 1 %}
+                  <a href="/menu/update/4" class="btn waves-effect waves-light teal hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                {% if tipo == 2 %}
+                  <a href="/menu/delete/4" class="btn waves-effect waves-light pink hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  Especial
+                </td>
+                <td>
+                {% if tipo == 1 %}
+                  <a href="/menu/update/5" class="btn waves-effect waves-light teal hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                {% if tipo == 2 %}
+                  <a href="/menu/delete/5" class="btn waves-effect waves-light pink hola"><i class="zmdi zmdi-arrow-right"></i></a>
+                {% endif %}
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- CONTENIDO -->
+{% endblock %}
+
+{% block finalJS %}
+  {# <script src="/js/index.js"></script> #}
+{% endblock %}

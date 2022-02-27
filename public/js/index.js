@@ -171,6 +171,94 @@ function register() {
             }
         );
     }
+   
+}
 
+function reg_evento(){
+    let cad = 0;
+    let enviar = true;
+    let form = document.getElementById("RegUsr");
+
+    if (form.nombreE.value == "") {
+        swal("Falta el nombre del evento", "", "error");
+        enviar = false;
+    } else {
+        cad = form.nombreE.value.length;
+        if (cad < 2) {
+            swal("Tamaño invalido", "Minimo 2 caracteres", "error");
+            enviar = false;
+        }
+    }
     
+    if (form.inmueble.value == "") {
+        swal("Falta el nombre del inmueble", "", "error");
+        enviar = false;
+    } else {
+        cad = form.inmueble.value.length;
+        if (cad < 2) {
+            swal("Tamaño invalido", "Minimo 2 caracteres", "error");
+            enviar = false;
+        }
+    }
+    
+    if (form.estado.value == "") {
+        swal("Falta el nombre del Estado", "", "error");
+        enviar = false;
+    } else {
+        cad = form.estado.value.length;
+        if (cad < 2) {
+            swal("Tamaño invalido", "Minimo 2 caracteres", "error");
+            enviar = false;
+        }
+    }
+
+    if (form.genero.value == -1){
+        swal("Falta la categoria", "Seleccione una categoria valida", "error");
+        enviar = false;
+    }
+
+    if (enviar) {
+        swal({
+            title: "¿Esta seguro?",
+            text: "Espere un momento",
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        },
+            function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/evento",
+                    data: {
+                        nombre: form.nombreE.value,
+                        inmueble: form.inmueble.value,
+                        estado: form.estado.value,
+                        categoria: form.genero.value,
+                    },
+                    cache: false,
+                    success: function (response) {
+                        if (response == "Registration successful!") {
+                            swal({
+                                title: "Registro exitoso",
+                                text: response,
+                                type: "success"
+                            },
+                                function () {
+                                    setTimeout(function () { location.href = "/menu"; }, 350);//Esperamos 0.35s para recargar la pagina
+                                });
+                        } else {
+                            swal({
+                                title: "Algo salio mal",
+                                text: response,
+                                type: "error"
+                            });
+                        }
+                    },
+                    error: function (response) { swal("Server Error", response); }
+                })
+            }
+        );
+    }
+
 }

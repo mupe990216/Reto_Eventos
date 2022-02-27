@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Credenciales;
-use App\Repository\CredencialesRepository;
 use Exception;
 
 class CredencialesController extends AbstractController
@@ -17,16 +17,27 @@ class CredencialesController extends AbstractController
     public function createCredenciales(ManagerRegistry $doctrine): Response
     {
         try {
-            $entityManager = $doctrine->getManager();
-            $credencial = new Credenciales();
-            $credencial->setUsuario("hola");
-            $credencial->setPassword("1234");
-            $entityManager->persist($credencial);
-            $entityManager->flush();
-            return new Response('Saved new product with id' . $credencial->getId());
+            $request = Request::createFromGlobals();
+            $object = json_decode($request->request->get('dataJson'),true);
+            if($object!=null){
+                $usr = $object['usur'];
+                $pwd = $object['pswd'];
+                $credencial = $doctrine->getRepository(Credenciales::class)->findOneBy(['usuario' => $usr]);
+                if($credencial==null){
+                    $entityManager = $doctrine->getManager();
+                    $credencial = new Credenciales();
+                    $credencial->setUsuario($usr);
+                    $credencial->setPassword($pwd);
+                    $entityManager->persist($credencial);
+                    $entityManager->flush();
+                    return new Response("Registration successful!");
+                }else{
+                    return new Response("Existing user");
+                }//end if
+            }//end if
         } catch (Exception $e) {
             return new Response($e);
-        }
+        }//end try
     }
 
     #[Route('/credenciales/{usr}', name: 'db_show_credencial')]
@@ -35,9 +46,6 @@ class CredencialesController extends AbstractController
         try {
             $credencial = $doctrine->getRepository(Credenciales::class)->findOneBy(['usuario' => $usr]);
             if (!$credencial) {
-                // throw $this->createNotFoundException(
-                //     'No credential found for user ' . $usr
-                // );
                 return new Response('No credential found for user ' . $usr);
             }
             return new Response('Check out this great product: ' . $credencial->getUsuario() . $credencial->getPassword());
@@ -53,9 +61,6 @@ class CredencialesController extends AbstractController
             $entityManager = $doctrine->getManager();
             $credencial = $entityManager->getRepository(Credenciales::class)->findOneBy(['usuario' => $usr]);
             if (!$credencial) {
-                // throw $this->createNotFoundException(
-                //     'No credential found for user ' . $usr
-                // );
                 return new Response('No credential found for user ' . $usr);
             }
             $credencial->setUsuario($usr . "0");
@@ -75,9 +80,6 @@ class CredencialesController extends AbstractController
             $entityManager = $doctrine->getManager();
             $credencial = $entityManager->getRepository(Credenciales::class)->findOneBy(['usuario' => $usr]);
             if (!$credencial) {
-                // throw $this->createNotFoundException(
-                //     'No credential found for user ' . $usr
-                // );
                 return new Response('No credential found for user ' . $usr);
             }
             $entityManager->remove($credencial);

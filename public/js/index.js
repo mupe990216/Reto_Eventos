@@ -143,7 +143,7 @@ function register() {
             function () {
                 $.ajax({
                     type: "POST",
-                    url: "/registration",
+                    url: "/credenciales",
                     data: {
                         dataJson: JSON.stringify(dataJson)
                     },
@@ -156,7 +156,7 @@ function register() {
                                 type: "success"
                             },
                                 function () {
-                                    setTimeout(function () { location.href = "/"; }, 350);//Esperamos 0.35s para recargar la pagina
+                                    setTimeout(function () { location.href = "/login"; }, 350);//Esperamos 0.35s para recargar la pagina
                                 });
                         } else {
                             swal({

@@ -57,8 +57,8 @@ $(document).ready(function(){
     $('.btn-ExitSystem').on('click', function(e){
         e.preventDefault();
         swal({ 
-            title: "Do you want to get out?",   
-            text: "Your session will be closed",
+            title: "¿Desea cerrar sesión?",   
+            text: "Su sesión sera cerrada",
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
@@ -67,7 +67,7 @@ $(document).ready(function(){
             closeOnConfirm: false,
             cancelButtonText: "Cancel"
         }, function(){
-            setTimeout(function(){ window.location='/'; }, 200);
+            setTimeout(function(){ window.location='/login'; }, 200);
         });
     });
 

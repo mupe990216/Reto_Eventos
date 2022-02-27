@@ -1,0 +1,74 @@
+{% extends "base_init.html.twig" %}
+{% block title %}.: Menu :.{% endblock %}
+
+{% block NavLateral %}
+        <div class="NavLateral-Nav">
+                <ul class="full-width">
+                    <li>
+                        <a href="/menu" class="waves-effect waves-light"><i class="zmdi zmdi-assignment-return"></i> Inicio</a>
+                    </li>
+                    <li class="NavLateralDivider"></li>
+                </ul><br><br><br>
+        </div>
+{% endblock %}
+
+{% block CampanitaNotificaciones %}
+    <ul class="full-width">
+
+        <li class="btn-MobileMenu ShowHideMenu"><a href="#" class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Menu"><i class="zmdi zmdi-menu"></i></a></li>
+        <a href="#" class="hola">
+        <li style="margin-top: 10px; margin-right: 10px;"><figure><img src="/img/02Mas.png" alt="UserImage"></figure></li>
+        <li class="hola" style="padding:0 5px; margin-top: 10px;">Nombre</li>
+        </a>             
+        <li style="margin-top: 10px; margin-right: 20px;"><a href="#" class="tooltipped waves-effect waves-light btn-ExitSystem" data-position="bottom" data-delay="50" data-tooltip="Cerrar Sesión"><i class="zmdi zmdi-power"></i></a></li>
+                                
+    </ul>   
+{% endblock %}
+
+{% block contenido %}
+<!-- CONTENIDO -->
+    <div class="row" style="margin-bottom: 15%;">
+            <h2 style="text-align: center;"> Gestión Eventos </h2>
+            <article class="col s12">
+
+                <div class="full-width center-align" style="margin: 40px 0;">
+
+                    <a href="/menu/form">
+                    <div class="tile">
+                        <div class="tile-icon"><i class="zmdi zmdi-accounts-add"></i></div>
+                        <div class="tile-caption">
+                            <br>
+                            <span class="center-align">Agregar</span>                            
+                        </div>
+                        <a href="/menu/form" class="tile-link waves-effect waves-light">Agregar un Evento &nbsp;<i class="zmdi zmdi-caret-right-circle"></i></a>
+                    </div>
+                    </a>
+
+                    <a href="/menu/search/1">
+                    <div class="tile">
+                        <div class="tile-icon"><i class="zmdi zmdi-search-in-file"></i></div>
+                        <div class="tile-caption">
+                            <br>
+                            <span class="center-align">Buscar</span>                               
+                        </div>
+                        <a href="/menu/search/1" class="tile-link waves-effect waves-light">Buscar un Evento &nbsp;<i class="zmdi zmdi-caret-right-circle"></i></a>
+                    </div>
+                    </a>
+                    
+                    <a href="/menu/search/2">
+                    <div class="tile">
+                        <div class="tile-icon"><i class="zmdi zmdi-card-off"></i></div>
+                        <div class="tile-caption">
+                            <br>
+                            <span class="center-align">Eliminar</span>                            
+                        </div>
+                        <a href="/menu/search/2" class="tile-link waves-effect waves-light">Eliminar un Evento &nbsp;<i class="zmdi zmdi-caret-right-circle"></i></a>
+                    </div>
+                    </a>
+
+                </div><br><br> 
+
+            </article>
+    </div>
+<!-- CONTENIDO -->
+{% endblock %}

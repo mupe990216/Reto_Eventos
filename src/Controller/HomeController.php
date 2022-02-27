@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Credenciales;
 
 
 class HomeController extends AbstractController
@@ -18,7 +20,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/login', name: 'app_login', methods: ["GET","POST"])]
-    public function login()
+    public function login(ManagerRegistry $doctrine)
     {
         $request = Request::createFromGlobals();
         $method = $request->getMethod();
@@ -29,11 +31,12 @@ class HomeController extends AbstractController
             if($object!=null){
                 $usr = $object['usur'];
                 $pws = $object['pswd'];
-                //
-                return new Response("Welcome!");
-            }else{
-                return new Response("Credenciales invalidas".$request->getMethod());
-            }//end if
+                $credencial = $doctrine->getRepository(Credenciales::class)->findOneBy(['usuario' => $usr,'password'=>$pws]);
+                if($credencial!=null)
+                    return new Response("Welcome!");
+                else
+                    return new Response("Credenciales invalidas");
+            }
         }
     }
 
@@ -43,14 +46,35 @@ class HomeController extends AbstractController
         return $this->render('create_count.html.twig');
     }
 
-    #[Route('/menu', name: 'app_menu', methods: ["GET"])]
+    #[Route('/menu', name: 'app_menu')]
     public function menu()
     {
-        return new Response(
-            "Menu Inicio " . "<br><button><a href='/'>Regresar</button>"
-        );
+        return $this->render('menu_inicio.html.twig');
     }
 
+    #[Route('/menu/form', name: 'app_menu_form')]
+    public function m_form()
+    {
+        return $this->render('menu_form.html.twig');
+    }
+
+    #[Route('/menu/search/{id}', name: 'app_menu_search')]
+    public function m_search(int $id)
+    {
+        return $this->render('menu_search.html.twig',['tipo'=>$id]);
+    }
+
+    #[Route('/menu/update', name: 'app_menu_update')]
+    public function m_update()
+    {
+        return $this->render('menu_update.html.twig');
+    }
+
+    #[Route('/menu/delete', name: 'app_menu_delete')]
+    public function m_delete()
+    {
+        return $this->render('menu_delete.html.twig');
+    }
     // #[Route('/{name}', name: 'app_notFound', methods: ["GET"])]
     // public function notFound($name)
     // {

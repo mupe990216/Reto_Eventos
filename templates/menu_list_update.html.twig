@@ -1,0 +1,56 @@
+{% extends 'menu_inicio.html.twig' %}
+{% block contenido %}
+	<!-- CONTENIDO -->
+	<div class="row">
+		<nav>
+			<div class="nav-wrapper grey darken-2">
+				<div class="col s12" style="text-align: center;">
+					<a href="/menu" class="rutaNavega">Menu</a>
+					<i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
+					<a href="/menu/search/1" class="rutaNavega">Seleccionar categoria</a>
+					<i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
+					<a href="#" class="rutaNavegaFinal">Categoria	{{cat}}</a>
+				</div>
+			</div>
+		</nav>
+	</div><br>
+
+
+	<h2 class="center-align">Categoria:	{{cat}}</h2>
+
+  {# Opcion si no hay eventos registrados #}
+	{% if opc == 0 %}
+		<br><h4 class="center-align">No hay eventos registrados</h4><br><br><br>
+	{% endif %}
+
+  {# Mostrar la lista de eventos registrados #}
+	{% if opc != 0 %}
+		<div class="container center-align" style="margin-bottom: 15%;">
+			<div class="row">
+				{% for evento in eventos %}
+					<div class="col m12 l3" style="padding: 1%;">
+						<div class="card grey darken-2 center-box">
+							<div class="card-content white-text">
+								<p class="TituloPostal">{{evento.getNombre()}}</p>
+                				<p class="">{{evento.getInmueble()}}</p>
+                				<p class="">{{evento.getEstado()}}</p>
+							</div>
+							<div class="card-action">
+								<a href="" class="btn teal darken-2 waves-effect waves-light BotonPostal">Editar  {#{evento.getId()}#}
+									<i class="zmdi zmdi-edit"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>		
+		{# {{dump(eventos)}} #}
+	{% endif %}
+
+	<!-- CONTENIDO -->
+{% endblock %}
+
+{% block finalJS %}
+	{# <script src="/js/index.js"></script> #}
+{% endblock %}

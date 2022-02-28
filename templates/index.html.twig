@@ -14,50 +14,125 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="container center-align" style="margin-bottom: 15%;">
-<h2 class="center-align">Categoria: 1</h2>
-            <div class="row">                
-                <div class="col m12 l3">
-                    <div class="card grey darken-2 center-box">
-                        <div class="card-content white-text">
-                            <p class="TituloPostal">Evento</p>
-                        </div>
-                        <div class="card-action">
-                              <a href="" class="btn orange darken-2 waves-effect waves-light BotonPostal">Elegir <i class="zmdi zmdi-long-arrow-tab"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col m12 l3">
-                    <div class="card grey darken-2 center-box">
-                        <div class="card-content white-text">
-                            <p class="TituloPostal">Evento</p>
-                        </div>
-                        <div class="card-action">
-                              <a href="" class="btn orange darken-2 waves-effect waves-light BotonPostal">Elegir <i class="zmdi zmdi-long-arrow-tab"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col m12 l3">
-                    <div class="card grey darken-2 center-box">
-                        <div class="card-content white-text">
-                            <p class="TituloPostal">Evento</p>
-                        </div>
-                        <div class="card-action">
-                              <a href="" class="btn orange darken-2 waves-effect waves-light BotonPostal">Elegir <i class="zmdi zmdi-long-arrow-tab"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col m12 l3">
-                    <div class="card grey darken-2 center-box">
-                        <div class="card-content white-text">
-                            <p class="TituloPostal">Evento</p>
-                        </div>
-                        <div class="card-action">
-                              <a href="" class="btn orange darken-2 waves-effect waves-light BotonPostal">Elegir <i class="zmdi zmdi-long-arrow-tab"></i></a>
-                        </div>
-                    </div>
+
+{# --------------------------------- Conciertos --------------------------------- #}
+<div class="container center-align" style="margin-bottom: 5%;">
+<h2 class="center-align">Conciertos</h2>
+{% if Concierto is not empty %}
+    <div class="row">
+    {% for evento in Concierto%}
+        <div class="col m12 l3" style="padding: 1%;">
+            <div class="card grey darken-2 center-box">
+                <div class="card-content white-text">
+                    <p class="TituloPostal">{{evento.getNombre()}}</p>
+                    <p>{{evento.getInmueble()}}</p>
+                    <p>{{evento.getEstado()}}</p>
                 </div>
             </div>
+        </div>
+    {% endfor %}        
+    </div>
+{% else %}
+    <h4 class="center-align">No hay eventos registrados en esta categoria</h4><br>
+{% endif %}
 </div>
+{# ------------------------------- End Conciertos ------------------------------- #}
+
+
+{# --------------------------------- Festivales --------------------------------- #}
+<div class="container center-align" style="margin-bottom: 5%;">
+<h2 class="center-align">Festivales</h2>
+{% if Festival is not empty %}
+    <div class="row">
+    {% for evento in Festival%}
+        <div class="col m12 l3" style="padding: 1%;">
+            <div class="card grey darken-2 center-box">
+                <div class="card-content white-text">
+                    <p class="TituloPostal">{{evento.getNombre()}}</p>
+                    <p>{{evento.getInmueble()}}</p>
+                    <p>{{evento.getEstado()}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}        
+    </div>
+{% else %}
+    <h4 class="center-align">No hay eventos registrados en esta categoria</h4><br>
+{% endif %}
+</div>
+{# ------------------------------- End Festivales ------------------------------- #}
+
+
+{# --------------------------------- Teatro --------------------------------- #}
+<div class="container center-align" style="margin-bottom: 5%;">
+<h2 class="center-align">Teatro</h2>
+{% if Teatro is not empty %}
+    <div class="row">
+    {% for evento in Teatro%}
+        <div class="col m12 l3" style="padding: 1%;">
+            <div class="card grey darken-2 center-box">
+                <div class="card-content white-text">
+                    <p class="TituloPostal">{{evento.getNombre()}}</p>
+                    <p>{{evento.getInmueble()}}</p>
+                    <p>{{evento.getEstado()}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}        
+    </div>
+{% else %}
+    <h4 class="center-align">No hay eventos registrados en esta categoria</h4><br>
+{% endif %}
+</div>
+{# ------------------------------- End Teatro ------------------------------- #}
+
+
+{# --------------------------------- Deporte --------------------------------- #}
+<div class="container center-align" style="margin-bottom: 5%;">
+<h2 class="center-align">Deporte</h2>
+{% if Deporte is not empty %}
+    <div class="row">
+    {% for evento in Deporte%}
+        <div class="col m12 l3" style="padding: 1%;">
+            <div class="card grey darken-2 center-box">
+                <div class="card-content white-text">
+                    <p class="TituloPostal">{{evento.getNombre()}}</p>
+                    <p>{{evento.getInmueble()}}</p>
+                    <p>{{evento.getEstado()}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}        
+    </div>
+{% else %}
+    <h4 class="center-align">No hay eventos registrados en esta categoria</h4><br>
+{% endif %}
+</div>
+{# ------------------------------- End Deporte ------------------------------- #}
+
+
+{# --------------------------------- Especial --------------------------------- #}
+<div class="container center-align" style="margin-bottom: 5%;">
+<h2 class="center-align">Especial</h2>
+{% if Especial is not empty %}
+    <div class="row">
+    {% for evento in Especial%}
+        <div class="col m12 l3" style="padding: 1%;">
+            <div class="card grey darken-2 center-box">
+                <div class="card-content white-text">
+                    <p class="TituloPostal">{{evento.getNombre()}}</p>
+                    <p>{{evento.getInmueble()}}</p>
+                    <p>{{evento.getEstado()}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}        
+    </div>
+{% else %}
+    <h4 class="center-align">No hay eventos registrados en esta categoria</h4><br>
+{% endif %}
+</div>
+{# ------------------------------- End Especial ------------------------------- #}
+
 
 {% endblock %}

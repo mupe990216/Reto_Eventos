@@ -17,9 +17,27 @@ class EventoController extends AbstractController
 {
 
     #[Route('/', name: 'app_homepage')]
-    public function homePage()
+    public function homePage(ManagerRegistry $doctrine): Response
     {
-        return $this->render('index.html.twig');
+        $request = Request::createFromGlobals();
+        $db = $doctrine->getRepository(Evento::class);
+        if($request->getMethod()=="GET"){
+            $Concierto = $db->findBy(['categoria' => 1]);
+            $Festival = $db->findBy(['categoria' => 2]);
+            $Teatro = $db->findBy(['categoria' => 3]);
+            $Deporte = $db->findBy(['categoria' => 4]);
+            $Especial = $db->findBy(['categoria' => 5]);
+            return $this->render('index.html.twig',[
+                'Concierto' => $Concierto,
+                'Festival' => $Festival,
+                'Teatro' => $Teatro,
+                'Deporte' => $Deporte,
+                'Especial' => $Especial
+            ]);
+        }else{
+            $eventos = $db->findAll();
+            return $this->json(['Eventos' => $eventos]);
+        }
     }
 
 
@@ -31,7 +49,7 @@ class EventoController extends AbstractController
         $inmueble = $request->request->get('inmueble');
         $estado = $request->request->get('estado');
         $categoria = $request->request->get('categoria');
-        
+
         $entityManager = $doctrine->getManager();
         $evento = new Evento();
         $evento->setNombre($nombre);
@@ -43,59 +61,62 @@ class EventoController extends AbstractController
         return new Response("Registration successful!");
     }
 
-    #[Route('/menu/update/{id}',name: 'db_update_evento')]
-    public function updateEvento(ManagerRegistry $doctrine, int $id): Response{
-        $cat = ['Concierto','Festival','Teatro','Deporte','Especial'];
-        if($id>0 && $id<6){
+    #[Route('/menu/update/{id}', name: 'db_update_evento')]
+    public function updateEvento(ManagerRegistry $doctrine, int $id): Response
+    {
+        $cat = ['Concierto', 'Festival', 'Teatro', 'Deporte', 'Especial'];
+        if ($id > 0 && $id < 6) {
             $db = $doctrine->getRepository(Evento::class);
             $eventos = $db->findBy(['categoria' => $id]);
-            if($eventos==null){
-                return $this->render('menu_list_update.html.twig',['cat'=>$cat[$id-1], 'opc' => 0]);
-            }else{
+            if ($eventos == null) {
+                return $this->render('menu_list_update.html.twig', ['cat' => $cat[$id - 1], 'opc' => 0]);
+            } else {
                 $encoders = [new XmlEncoder(), new JsonEncoder()];
                 $normalizers = [new ObjectNormalizer()];
                 $serializer = new Serializer($normalizers, $encoders);
                 $jsonContent = $serializer->serialize($eventos, 'json');
-                return $this->render('menu_list_update.html.twig',['cat'=>$cat[$id-1], 'opc' => $id, 'eventos' => $eventos, 'tam' => sizeof($eventos)]);
+                return $this->render('menu_list_update.html.twig', ['cat' => $cat[$id - 1], 'opc' => $id, 'eventos' => $eventos, 'tam' => sizeof($eventos)]);
             }
-        }else{
+        } else {
             return $this->redirectToRoute('app_login');
         }
     }
 
-    #[Route('/menu/delete/{id}',name: 'db_delete_evento')]
-    public function deleteEvento(ManagerRegistry $doctrine, int $id): Response{
-        $cat = ['Concierto','Festival','Teatro','Deporte','Especial'];
-        if($id>0 && $id<6){
+    #[Route('/menu/delete/{id}', name: 'db_delete_evento')]
+    public function deleteEvento(ManagerRegistry $doctrine, int $id): Response
+    {
+        $cat = ['Concierto', 'Festival', 'Teatro', 'Deporte', 'Especial'];
+        if ($id > 0 && $id < 6) {
             $db = $doctrine->getRepository(Evento::class);
             $eventos = $db->findBy(['categoria' => $id]);
-            if($eventos==null){
-                return $this->render('menu_list_delete.html.twig',['cat'=>$cat[$id-1], 'opc' => 0]);
-            }else{
-                return $this->render('menu_list_delete.html.twig',['cat'=>$cat[$id-1], 'opc' => $id, 'eventos' => $eventos, 'tam' => sizeof($eventos)]);
+            if ($eventos == null) {
+                return $this->render('menu_list_delete.html.twig', ['cat' => $cat[$id - 1], 'opc' => 0]);
+            } else {
+                return $this->render('menu_list_delete.html.twig', ['cat' => $cat[$id - 1], 'opc' => $id, 'eventos' => $eventos, 'tam' => sizeof($eventos)]);
             }
-        }else{
+        } else {
             return new Response("Categoria de evento, invalido");
         }
     }
 
     #[Route('/show/{opc}/{id}', name: 'db_showOne')]
-    public function m_showOne(ManagerRegistry $doctrine, string $opc, int $id)
+    public function m_showOne(ManagerRegistry $doctrine, string $opc, int $id): Response
     {
         $entityManager = $doctrine->getManager();
         $evento = $entityManager->getRepository(Evento::class)->find($id);
-        if($evento!=null){
-            return $this->render('show.html.twig',['opc'=>$opc,'id'=>$id,'evento'=>$evento]);
+        if ($evento != null) {
+            return $this->render('show.html.twig', ['opc' => $opc, 'id' => $id, 'evento' => $evento]);
         }
         return new Response("Accion invalida");
     }
 
-    #[Route('/evento/{action}/{id}',name: 'db_action_evento')]
-    public function actionEvento(ManagerRegistry $doctrine, string $action,int $id){
+    #[Route('/evento/{action}/{id}', name: 'db_action_evento')]
+    public function actionEvento(ManagerRegistry $doctrine, string $action, int $id): Response
+    {
         $entityManager = $doctrine->getManager();
         $evento = $entityManager->getRepository(Evento::class)->find($id);
-        if($evento!=null){
-            if($action=="update"){
+        if ($evento != null) {
+            if ($action == "update") {
                 $request = Request::createFromGlobals();
                 $nombre = $request->request->get('nombre');
                 $inmueble = $request->request->get('inmueble');
@@ -108,8 +129,8 @@ class EventoController extends AbstractController
                 $entityManager->flush();
                 return new Response("Evento actualizado correctamente");
             }
-            
-            if($action=="delete"){
+
+            if ($action == "delete") {
                 $entityManager->remove($evento);
                 $entityManager->flush();
                 return new Response("Evento eliminado correctamente");
@@ -117,5 +138,4 @@ class EventoController extends AbstractController
         }
         return new Response("Accion invalida");
     }
-
 }

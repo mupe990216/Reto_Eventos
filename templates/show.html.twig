@@ -1,0 +1,172 @@
+{% extends "menu_inicio.html.twig" %}
+{% block contenido %}
+<!-- CONTENIDO -->
+
+{% if opc == "update" %}
+{# {{opc}} #}
+    <div class="row">
+		<nav>
+			<div class="nav-wrapper grey darken-2">
+				<div class="col s12" style="text-align: center;">
+					<a href="/menu" class="rutaNavega">Menu</a>
+					<i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
+					<a href="/menu/search/1" class="rutaNavega">Seleccionar categoria</a>
+                    <i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
+					<a href="#" class="rutaNavegaFinal">Modificar evento</a>
+				</div>
+			</div>
+		</nav>
+	</div><br>
+    <h2 class="center-align">Modificar evento</h2>
+{% endif %}
+
+
+{% if opc == "delete" %}
+{# {{opc}} #}
+    <div class="row">
+		<nav>
+			<div class="nav-wrapper grey darken-2">
+				<div class="col s12" style="text-align: center;">
+					<a href="/menu" class="rutaNavega">Menu</a>
+					<i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
+					<a href="/menu/search/2" class="rutaNavega">Seleccionar categoria</a>
+                    <i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
+					<a href="#" class="rutaNavegaFinal">Modificar evento</a>
+				</div>
+			</div>
+		</nav>
+	</div><br>
+    <h2 class="center-align">Eliminar evento</h2>
+{% endif %}
+
+<!-- <h2 class="center-align">Modificar Perfil</h2><hr> -->
+<div class="container" style="margin-bottom: 15%; background-color: gray; padding: 3%; border-radius: 25px;">
+    <div class="row">
+        <form class="col s12" id="RegUsr" name="RegUsr" method="POST" action=""><br>
+            <div class="row">
+
+                {% if opc == "update" %}
+                <div class="input-field col m8 offset-m2 l6">
+                    <i class="zmdi zmdi-collection-text prefix"></i>
+                    <input id="nombreE" name="nombreE" type="text" class="validate" length="64" maxlength="64" minlength="2"
+                        value="{{evento.getNombre()}}" required>
+                    <label for="nombreE">Nombre</label>
+                </div>
+                <div class="input-field col m8 offset-m2 l6">
+                    <i class="zmdi zmdi-pin-drop prefix"></i>
+                    <input id="inmueble" name="inmueble" type="text" class="validate" length="64" maxlength="64"
+                        minlength="2" value="{{evento.getInmueble()}}" required>
+                    <label for="inmueble">Inmueble</label>
+                </div>
+                {% endif %}
+
+                {% if opc == "delete" %}
+                <div class="input-field col m8 offset-m2 l6">
+                    <i class="zmdi zmdi-collection-text prefix"></i>
+                    <input id="nombreE" name="nombreE" type="text" class="validate" length="64" maxlength="64" minlength="2"
+                        value="{{evento.getNombre()}}" disabled>
+                    <label for="nombreE">Nombre</label>
+                </div>
+                <div class="input-field col m8 offset-m2 l6">
+                    <i class="zmdi zmdi-pin-drop prefix"></i>
+                    <input id="inmueble" name="inmueble" type="text" class="validate" length="64" maxlength="64"
+                        minlength="2" value="{{evento.getInmueble()}}" disabled>
+                    <label for="inmueble">Inmueble</label>
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="row">
+
+                
+                {% if opc == "update" %}
+                <div class="input-field col m8 offset-m2 l6">
+                    <i class="zmdi zmdi-library prefix"></i>
+                    <input id="estado" name="estado" type="text" class="validate" length="64" maxlength="64"
+                        minlength="2" value="{{evento.getEstado()}}" required>
+                    <label for="estado">Estado o Ciudad</label>
+                </div>
+                <div class="input-field col m8 offset-m2 l6">
+                    <select id="genero" name="genero" class="icons" required>
+                        <option value="-1" disabled>Selecciona una categoria -></option>
+                        <option value="1" {% if evento.getCategoria() == 1 %} selected {% endif %}>
+                            Concierto</option>
+                        <option value="2" {% if evento.getCategoria() == 2 %} selected {% endif %}>
+                            Festival</option>
+                        <option value="3" {% if evento.getCategoria() == 3 %} selected {% endif %}>
+                            Teatro</option>
+                        <option value="4" {% if evento.getCategoria() == 4 %} selected {% endif %}>
+                            Deporte</option>
+                        <option value="5" {% if evento.getCategoria() == 5 %} selected {% endif %}>
+                            Especial</option>
+                    </select>
+                    <label>Categoria</label>
+                </div>
+                {% endif %}       
+
+                {% if opc == "delete" %}
+                <div class="input-field col m8 offset-m2 l6">
+                    <i class="zmdi zmdi-library prefix"></i>
+                    <input id="estado" name="estado" type="text" class="validate" length="64" maxlength="64"
+                        minlength="2" value="{{evento.getEstado()}}" disabled>
+                    <label for="estado">Estado o Ciudad</label>
+                </div>
+                <div class="input-field col m8 offset-m2 l6">
+                    <select id="genero" name="genero" class="icons" disabled>
+                        <option value="-1" disabled>Selecciona una categoria -></option>
+                        <option value="1" {% if evento.getCategoria() == 1 %} selected {% endif %}>
+                            Concierto</option>
+                        <option value="2" {% if evento.getCategoria() == 2 %} selected {% endif %}>
+                            Festival</option>
+                        <option value="3" {% if evento.getCategoria() == 3 %} selected {% endif %}>
+                            Teatro</option>
+                        <option value="4" {% if evento.getCategoria() == 4 %} selected {% endif %}>
+                            Deporte</option>
+                        <option value="5" {% if evento.getCategoria() == 5 %} selected {% endif %}>
+                            Especial</option>
+                    </select>
+                    <label>Categoria</label>
+                </div>
+                {% endif %}
+
+            </div>
+
+                {% if opc == "update" %}
+                    <input type="hidden" id="idEvent" name="idEvent" value="{{evento.getId()}}">
+                    <div class="row">
+                        <div class="input-field col m5 offset-m4 l5 offset-l5">
+                            <button type="button" class="btn-large teal waves-effect waves-light" name="enviar" 
+                                id="enviar" onclick="act_evento();">Modificar&nbsp;&nbsp;<i class="zmdi zmdi-mail-send"></i>
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if opc == "delete" %}
+                    <input type="hidden" id="idEvent" name="idEvent" value="{{evento.getId()}}">
+                    <div class="row">
+                        <div class="input-field col m5 offset-m4 l5 offset-l5">
+                            <button type="button" class="btn-large read waves-effect waves-light" name="enviar" 
+                                id="enviar" onclick="eli_evento();">Eliminar&nbsp;&nbsp;<i class="zmdi zmdi-mail-send"></i>
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+            {# <div class="row">
+                <div class="input-field col m5 offset-m4 l5 offset-l5">
+                    <button type="button" class="btn-large waves-effect waves-light" name="enviar" 
+                        id="enviar" onclick="reg_evento();">Enviar&nbsp;&nbsp;<i class="zmdi zmdi-mail-send"></i>
+                    </button>
+                </div>
+            </div> #}
+
+
+        </form>
+    </div>
+</div><br><br>
+<!-- CONTENIDO -->
+{% endblock %}
+
+{% block finalJS %}
+<script src="/js/index.js"></script>
+{% endblock %}

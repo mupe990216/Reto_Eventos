@@ -13,6 +13,28 @@ use Exception;
 class CredencialesController extends AbstractController
 {
 
+    #[Route('/login', name: 'app_login', methods: ["GET", "POST"])]
+    public function login(ManagerRegistry $doctrine)
+    {
+        $request = Request::createFromGlobals();
+        $method = $request->getMethod();
+        if ($method == "GET") {
+            return $this->render('login.html.twig');
+        } else if ($method == "POST") {
+            $object = json_decode($request->request->get('dataJson'), true);
+            if ($object != null) {
+                $usr = $object['usur'];
+                $pws = $object['pswd'];
+                $credencial = $doctrine->getRepository(Credenciales::class)->findOneBy(['usuario' => $usr, 'password' => $pws]);
+                if ($credencial != null)
+                    return new Response("Welcome!");
+                else
+                    return new Response("Credenciales invalidas");
+            }
+        }
+    }
+
+
     #[Route('/credenciales', name: 'db_create_credenciales')]
     public function createCredenciales(ManagerRegistry $doctrine): Response
     {

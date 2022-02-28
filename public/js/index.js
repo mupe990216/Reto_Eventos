@@ -261,4 +261,133 @@ function reg_evento(){
         );
     }
 
-}
+}//reg_evento
+
+function act_evento(){
+    let cad = 0;
+    let enviar = true;
+    let form = document.getElementById("RegUsr");
+
+    if (form.nombreE.value == "") {
+        swal("Falta el nombre del evento", "", "error");
+        enviar = false;
+    } else {
+        cad = form.nombreE.value.length;
+        if (cad < 2) {
+            swal("Tamaño invalido", "Minimo 2 caracteres", "error");
+            enviar = false;
+        }
+    }
+    
+    if (form.inmueble.value == "") {
+        swal("Falta el nombre del inmueble", "", "error");
+        enviar = false;
+    } else {
+        cad = form.inmueble.value.length;
+        if (cad < 2) {
+            swal("Tamaño invalido", "Minimo 2 caracteres", "error");
+            enviar = false;
+        }
+    }
+    
+    if (form.estado.value == "") {
+        swal("Falta el nombre del Estado", "", "error");
+        enviar = false;
+    } else {
+        cad = form.estado.value.length;
+        if (cad < 2) {
+            swal("Tamaño invalido", "Minimo 2 caracteres", "error");
+            enviar = false;
+        }
+    }
+
+    if (form.genero.value == -1){
+        swal("Falta la categoria", "Seleccione una categoria valida", "error");
+        enviar = false;
+    }
+
+    if (enviar) {
+        swal({
+            title: "¿Esta seguro de modificar este evento?",
+            text: "Espere un momento",
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        },
+            function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/evento/update/"+form.idEvent.value,
+                    data: {
+                        nombre: form.nombreE.value,
+                        inmueble: form.inmueble.value,
+                        estado: form.estado.value,
+                        categoria: form.genero.value,
+                    },
+                    cache: false,
+                    success: function (response) {
+                        if (response == "Evento actualizado correctamente") {
+                            swal({
+                                title: "Actualización exitosa",
+                                text: response,
+                                type: "success"
+                            },
+                                function () {
+                                    setTimeout(function () { location.href = "/menu/update/"+form.genero.value; }, 350);//Esperamos 0.35s para recargar la pagina
+                                });
+                        } else {
+                            swal({
+                                title: "Algo salio mal",
+                                text: response,
+                                type: "error"
+                            });
+                        }
+                    },
+                    error: function (response) { swal("Server Error", response); }
+                })
+            }
+        );
+    }
+
+}//act_evento
+
+
+function eli_evento(){
+    let form = document.getElementById("RegUsr");
+    swal({
+        title: "¿Esta seguro de eliminar este evento?",
+        text: "Espere un momento",
+        type: "info",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        showLoaderOnConfirm: true
+    },
+        function () {
+            $.ajax({
+                type: "POST",
+                url: "/evento/delete/"+form.idEvent.value,
+                cache: false,
+                success: function (response) {
+                    if (response == "Evento eliminado correctamente") {
+                        swal({
+                            title: "Eliminación exitosa",
+                            text: response,
+                            type: "success"
+                            },
+                            function () {
+                                setTimeout(function () { location.href = "/menu/delete/"+form.genero.value; }, 350);//Esperamos 0.35s para recargar la pagina
+                            });
+                    } else {
+                        swal({
+                            title: "Algo salio mal",
+                            text: response,
+                            type: "error"
+                        });
+                    }
+                },
+                error: function (response) { swal("Server Error", response); }
+            })//$.ajax
+        }//function()
+    );//swal()
+}//act_evento

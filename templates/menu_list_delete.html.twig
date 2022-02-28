@@ -7,7 +7,7 @@
 				<div class="col s12" style="text-align: center;">
 					<a href="/menu" class="rutaNavega">Menu</a>
 					<i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
-					<a href="/menu/search/1" class="rutaNavega">Seleccionar categoria</a>
+					<a href="/menu/search/2" class="rutaNavega">Seleccionar categoria</a>
 					<i class="zmdi zmdi-chevron-right rutaNavega" style="display: inline-block;"></i>
 					<a href="#" class="rutaNavegaFinal">Categoria	{{cat}}</a>
 				</div>
@@ -36,7 +36,7 @@
                 				<p class="">{{evento.getEstado()}}</p>
 							</div>
 							<div class="card-action">
-								<a href="" class="btn red darken-2 waves-effect waves-light BotonPostal">Eliminar  {#{evento.getId()}#}
+								<a href="/show/delete/{{evento.getId()}}" class="btn red darken-2 waves-effect waves-light BotonPostal">Eliminar  {#{evento.getId()}#}
 									<i class="zmdi zmdi-delete"></i>
 								</a>
 							</div>

@@ -67,9 +67,47 @@ class EventoController extends AbstractController
                 return $this->render('menu_list_delete.html.twig',['cat'=>$cat[$id-1], 'opc' => $id, 'eventos' => $eventos, 'tam' => sizeof($eventos)]);
             }
         }else{
-            return $this->redirectToRoute('app_login');
+            return new Response("Categoria de evento, invalido");
         }
     }
 
-    
+    #[Route('/show/{opc}/{id}', name: 'db_showOne')]
+    public function m_showOne(ManagerRegistry $doctrine, string $opc, int $id)
+    {
+        $entityManager = $doctrine->getManager();
+        $evento = $entityManager->getRepository(Evento::class)->find($id);
+        if($evento!=null){
+            return $this->render('show.html.twig',['opc'=>$opc,'id'=>$id,'evento'=>$evento]);
+        }
+        return new Response("Accion invalida");
+    }
+
+    #[Route('/evento/{action}/{id}',name: 'db_action_evento')]
+    public function actionEvento(ManagerRegistry $doctrine, string $action,int $id){
+        $entityManager = $doctrine->getManager();
+        $evento = $entityManager->getRepository(Evento::class)->find($id);
+        if($evento!=null){
+            if($action=="update"){
+                $request = Request::createFromGlobals();
+                $nombre = $request->request->get('nombre');
+                $inmueble = $request->request->get('inmueble');
+                $estado = $request->request->get('estado');
+                $categoria = $request->request->get('categoria');
+                $evento->setNombre($nombre);
+                $evento->setInmueble($inmueble);
+                $evento->setEstado($estado);
+                $evento->setCategoria($categoria);
+                $entityManager->flush();
+                return new Response("Evento actualizado correctamente");
+            }
+            
+            if($action=="delete"){
+                $entityManager->remove($evento);
+                $entityManager->flush();
+                return new Response("Evento eliminado correctamente");
+            }
+        }
+        return new Response("Accion invalida");
+    }
+
 }

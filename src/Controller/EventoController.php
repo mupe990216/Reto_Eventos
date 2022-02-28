@@ -15,6 +15,14 @@ use Symfony\Component\Serializer\Serializer;
 
 class EventoController extends AbstractController
 {
+
+    #[Route('/', name: 'app_homepage')]
+    public function homePage()
+    {
+        return $this->render('index.html.twig');
+    }
+
+
     #[Route('/evento', name: 'db_create_evento')]
     public function createCredenciales(ManagerRegistry $doctrine): Response
     {

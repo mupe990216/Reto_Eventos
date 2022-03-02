@@ -46,15 +46,15 @@ scoop server:start --port=5000
 ```  
 Los paquetes de **Composer** implementados en el proyecto fueron:
 
-* Symfony Route
+Symfony Route
 ```
 composer require annotations
 ```  
-* Symfony twig
+Symfony twig
 ```
 composer require twig
 ```  
-* Doctrine
+Doctrine
 ```
 composer require symfony/orm-pack  
 composer require --dev symfony/maker-bundle  
@@ -62,4 +62,8 @@ composer require --dev symfony/maker-bundle
 _Creamos la base de datos en nuestro manejador_
 ```
 php bin/console doctrine:database:create
+```  
+_La primera vez que corremos el proyecto, es necesario migrar las entidades que ya existen a la base de datos **solo** si la acabamos de crear_
+```
+php bin/console make:migration
 ```  

@@ -11,11 +11,11 @@ Reto Eventos.
 
 ## Requisitos
 
-• [PHP 8.0.2](https://www.php.net/downloads.php)  
-• [Composer 2.2.6](https://getcomposer.org/download/)  
-• [Scoop](https://www.onmsft.com/how-to/how-to-install-the-scoop-package-manager-in-windows-10)  
-• [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
-• [MySQL 8.0.3](https://dev.mysql.com/downloads/installer/)  
+*• [PHP 8.0.2](https://www.php.net/downloads.php)  
+*• [Composer 2.2.6](https://getcomposer.org/download/)  
+*• [Scoop](https://www.onmsft.com/how-to/how-to-install-the-scoop-package-manager-in-windows-10)  
+*• [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
+*• [MySQL 8.0.3](https://dev.mysql.com/downloads/installer/)  
 
 ## Configurar base de datos 🔧
 
@@ -30,7 +30,7 @@ DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5
 **db_password**: _Contraseña para acceder al manejador_  
 **db_name**: _Nombre de la base de datos con la cual se quiera nombrar_  
   
-**NOTA IMPORTANTE 📢**: Verificar que se tenga descomentado el controlador de PHP para su manejador de base de dato en los archivos 'php.init' tanto el principal, como el de desarrollo y el de producción.
+**NOTA IMPORTANTE 📢**: Verificar que se tenga descomentado el controlador de PHP para su manejador de base de dato en los archivos _'php.init'_ tanto el principal, como el de desarrollo y el de producción.
 
 
 

@@ -32,9 +32,19 @@ DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5
   
 **NOTA IMPORTANTE 📢**: Verificar que se tenga descomentado el controlador de PHP para su manejador de base de datos en los archivos _'php.init'_ tanto el principal, como el de desarrollo y el de producción.
 
-## Packetes de composer    
+## Iniciando el proyecto 🚀   
 
-Los paquetes implementados en el proyecto fueron:
+_Abrir un interprete de comandos e instalamos el framework con el siguiente comando:_
+
+```
+scoop install symfony-cli
+```  
+_En la carpeta raíz del proyecto, ejecutar el siguiente comando para arrancar el proyecto (en mi caso utilizare el puerto 5000, por defecto se usa el 8000)_
+
+```
+scoop server:start --port=5000
+```  
+Los paquetes de **Composer** implementados en el proyecto fueron:
 
 * Symfony Route
 ```
@@ -49,17 +59,7 @@ composer require twig
 composer require symfony/orm-pack  
 composer require --dev symfony/maker-bundle  
 ```  
-
-## Iniciando el proyecto 🚀   
-
-_Abrir un interprete de comandos e instalamos el framework con el siguiente comando:_
-
+_Creamos la base de datos en nuestro manejador_
 ```
-scoop install symfony-cli
+php bin/console doctrine:database:create
 ```  
-_En la carpeta raíz del proyecto, ejecutar el siguiente comando para arrancar el proyecto (en mi caso utilizare el puerto 5000, por defecto se usa el 8000)_
-
-```
-scoop server:start --port=5000
-```  
-

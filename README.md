@@ -15,3 +15,13 @@ Reto Eventos.
 • [Composer 2.2.6](https://getcomposer.org/download/)  
 • [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
 
+## Configurar base de datos 🔧
+
+_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+
+_Dí cómo será ese paso_
+
+```
+Da un ejemplo
+```  
+

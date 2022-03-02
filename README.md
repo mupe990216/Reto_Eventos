@@ -1,7 +1,7 @@
 # Reto_Eventos
 Reto Eventos.  
 
-## Tecnologías usadas ⌨️  
+## Tecnologías usadas ⌨️💻  
 
 - [Symfony 6.0.4](https://symfony.com/doc/current/index.html) - Framework de PHP
 - [Materialize](http://materializecss.com/) - Framework CSS

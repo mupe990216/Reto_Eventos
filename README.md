@@ -68,4 +68,9 @@ _La primera vez que corremos el proyecto, es necesario migrar las entidades que 
 php bin/console make:migration  
 php bin/console doctrine:migrations:migrate  
 ```  
--Listo ya podemos dirigirnos a nuestro navegador al localhost en el puerto que seleccionemos-
+  
+Listo ya podemos dirigirnos a nuestro navegador al localhost en el puerto que seleccionemos  
+  
+  
+## Autor ✒️
+**Elias Muñoz Primero** - [mupe990216](https://github.com/mupe990216)

@@ -73,7 +73,11 @@ php bin/console doctrine:migrations:migrate
 ```  
   
 Listo ya podemos dirigirnos a nuestro navegador al localhost en el puerto que seleccionemos  
-  
-  
+
+_Para detener el proyecto se utiliza el comando:_
+```
+symfony server:stop  
+```  
+
 ## Autor ✒️
 **Elias Muñoz Primero** - [mupe990216](https://github.com/mupe990216)

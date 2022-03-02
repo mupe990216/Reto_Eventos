@@ -30,8 +30,14 @@ DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5
 **db_password**: _Contraseña para acceder al manejador_  
 **db_name**: _Nombre de la base de datos con la cual se quiera nombrar_  
   
-**NOTA IMPORTANTE 📢**: Verificar que se tenga descomentado el controlador de PHP para su manejador de base de dato en los archivos _'php.init'_ tanto el principal, como el de desarrollo y el de producción.
+**NOTA IMPORTANTE 📢**: Verificar que se tenga descomentado el controlador de PHP para su manejador de base de datos en los archivos _'php.init'_ tanto el principal, como el de desarrollo y el de producción.
 
+## Instalar Symfony  
 
+_Abrir un interprete de comandos_
+
+```
+scoop install symfony-cli
+```  
 
 

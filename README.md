@@ -65,5 +65,7 @@ php bin/console doctrine:database:create
 ```  
 _La primera vez que corremos el proyecto, es necesario migrar las entidades que ya existen a la base de datos **solo** si la acabamos de crear_
 ```
-php bin/console make:migration
+php bin/console make:migration  
+php bin/console doctrine:migrations:migrate  
 ```  
+-Listo ya podemos dirigirnos a nuestro navegador al localhost en el puerto que seleccionemos-

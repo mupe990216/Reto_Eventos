@@ -38,13 +38,17 @@ Los paquetes implementados en el proyecto fueron:
 
 * Symfony Route
 ```
-**$** composer require annotations
+composer require annotations
 ```  
 * Symfony twig
 ```
 composer require twig
 ```  
-* 
+* Doctrine
+```
+composer require symfony/orm-pack  
+composer require --dev symfony/maker-bundle  
+```  
 
 ## Iniciando el proyecto 🚀   
 

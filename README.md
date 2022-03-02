@@ -9,6 +9,7 @@ Reto Eventos.
 - [Sweet Alert](http://t4t5.github.io/sweetalert/) - Plugin JS para alertas
 - [jQuery custom content scroller](http://manos.malihu.gr/jquery-custom-content-scroller/) - Plugin JS para el Scroll
 
+  
 ## Requisitos 📋  
 
 - [PHP 8.0.2](https://www.php.net/downloads.php)  
@@ -17,6 +18,7 @@ Reto Eventos.
 - [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
 - [MySQL 8.0.3](https://dev.mysql.com/downloads/installer/)  
 
+  
 ## Configurar base de datos 🔧  
 
 _Localizar el archivo '.env'_
@@ -32,6 +34,7 @@ DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5
   
 **NOTA IMPORTANTE 📢**: Verificar que se tenga descomentado el controlador de PHP para su manejador de base de datos en los archivos _'php.init'_ tanto el principal, como el de desarrollo y el de producción.
 
+  
 ## Iniciando el proyecto 🚀   
 
 _Abrir un interprete de comandos e instalamos el framework con el siguiente comando:_

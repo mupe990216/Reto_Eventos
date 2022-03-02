@@ -25,6 +25,8 @@ _Dentro del archivo descomentar la variable global de la aplicacion llamada 'DAT
 ```
 DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7"
 ```  
-_**db_user**: Usuario para acceder al manejador
-_**db_password**: Contraseña para acceder al manejador
-_**db_name**: Nombre de la base de datos con la cual se quiera nombrar
+**db_user**: _Usuario para acceder al manejador  
+**db_password**: _Contraseña para acceder al manejador  
+**db_name**: _Nombre de la base de datos con la cual se quiera nombrar  
+
+

@@ -1,4 +1,4 @@
 # Reto_Eventos
-Reto Eventos.
-**instrucciones**
+Reto Eventos.  
+**Instrucciones**
 

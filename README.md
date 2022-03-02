@@ -1,7 +1,7 @@
 # Reto_Eventos
 Reto Eventos.  
 
-## Tecnologías usadas  
+## Tecnologías usadas ⌨️  
 
 - [Symfony 6.0.4](https://symfony.com/doc/current/index.html) - Framework de PHP
 - [Materialize](http://materializecss.com/) - Framework CSS
@@ -9,7 +9,7 @@ Reto Eventos.
 - [Sweet Alert](http://t4t5.github.io/sweetalert/) - Plugin JS para alertas
 - [jQuery custom content scroller](http://manos.malihu.gr/jquery-custom-content-scroller/) - Plugin JS para el Scroll
 
-## Requisitos
+## Requisitos 📋  
 
 - [PHP 8.0.2](https://www.php.net/downloads.php)  
 - [Composer 2.2.6](https://getcomposer.org/download/)  
@@ -17,7 +17,7 @@ Reto Eventos.
 - [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
 - [MySQL 8.0.3](https://dev.mysql.com/downloads/installer/)  
 
-## Configurar base de datos 🔧
+## Configurar base de datos 🔧  
 
 _Localizar el archivo '.env'_
 

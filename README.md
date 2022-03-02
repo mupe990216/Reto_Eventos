@@ -11,11 +11,11 @@ Reto Eventos.
 
 ## Requisitos
 
-*• [PHP 8.0.2](https://www.php.net/downloads.php)  
-*• [Composer 2.2.6](https://getcomposer.org/download/)  
-*• [Scoop](https://www.onmsft.com/how-to/how-to-install-the-scoop-package-manager-in-windows-10)  
-*• [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
-*• [MySQL 8.0.3](https://dev.mysql.com/downloads/installer/)  
+- [PHP 8.0.2](https://www.php.net/downloads.php)  
+- [Composer 2.2.6](https://getcomposer.org/download/)  
+- [Scoop](https://www.onmsft.com/how-to/how-to-install-the-scoop-package-manager-in-windows-10)  
+- [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
+- [MySQL 8.0.3](https://dev.mysql.com/downloads/installer/)  
 
 ## Configurar base de datos 🔧
 

@@ -14,14 +14,17 @@ Reto Eventos.
 • [PHP 8.0.2](https://www.php.net/downloads.php)  
 • [Composer 2.2.6](https://getcomposer.org/download/)  
 • [Yarn 1.23.0](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)  
+• [MySQL 8.0.3](https://dev.mysql.com/downloads/installer/)  
 
 ## Configurar base de datos 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+_Localizar el archivo '.env'
 
-_Dí cómo será ese paso_
+_Dentro del archivo descomentar la variable global de la aplicacion llamada 'DATABASE_URL' de acuerdo al manejador de base de datos que tengamos instalado, en mi caso MySQL 8.0.3
 
 ```
-Da un ejemplo
+DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7"
 ```  
-
+_**db_user**: Usuario para acceder al manejador
+_**db_password**: Contraseña para acceder al manejador
+_**db_name**: Nombre de la base de datos con la cual se quiera nombrar

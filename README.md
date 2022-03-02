@@ -18,15 +18,15 @@ Reto Eventos.
 
 ## Configurar base de datos 🔧
 
-_Localizar el archivo '.env'
+_Localizar el archivo '.env'_
 
-_Dentro del archivo descomentar la variable global de la aplicacion llamada 'DATABASE_URL' de acuerdo al manejador de base de datos que tengamos instalado, en mi caso MySQL 8.0.3
+Dentro del archivo descomentar la variable global de la aplicacion llamada 'DATABASE_URL' de acuerdo al manejador de base de datos que tengamos instalado, en mi caso MySQL 8.0.3
 
 ```
 DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7"
 ```  
-**db_user**: _Usuario para acceder al manejador  
-**db_password**: _Contraseña para acceder al manejador  
-**db_name**: _Nombre de la base de datos con la cual se quiera nombrar  
+**db_user**: _Usuario para acceder al manejador_  
+**db_password**: _Contraseña para acceder al manejador_  
+**db_name**: _Nombre de la base de datos con la cual se quiera nombrar_  
 
 
